@@ -17,8 +17,16 @@ app.use(cors());
 app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// MongoDB connection
-mongoose.connect('mongodb+srv://magasov:12345@magasov.pnjqkm6.mongodb.net/?retryWrites=true&w=majority&appName=magasov', { useNewUrlParser: true, useUnifiedTopology: true });
+// // MongoDB connection
+// mongoose.connect('mongodb+srv://magasov:12345@magasov.pnjqkm6.mongodb.net/?retryWrites=true&w=majority&appName=magasov', { useNewUrlParser: true, useUnifiedTopology: true });
+const uri = "mongodb+srv://magasov:12345@ac-qlbxx9y.pnjqkm6.mongodb.net/mydatabase?retryWrites=true&w=majority";
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+        console.error('Error connecting to MongoDB', err);
+    });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
