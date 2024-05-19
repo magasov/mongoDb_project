@@ -8,8 +8,8 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const User = require('./models/User');
-const Post = require('./models/Post');
+const User = require('./models/user');
+const Post = require('./models/post');
 
 // Middleware
 app.use(bodyParser.json());
